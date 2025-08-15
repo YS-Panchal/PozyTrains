@@ -38,6 +38,26 @@ import TrainSearch from "./User/Components/TrainSearch";
 import PNRStatus from "./User/Components/PNRStatus";
 import PackageBooking from './User/Components/PackageBooking';
 //import Home from './User/Components/Home';
+import { fetchUsers } from './jsonbinApi';
+
+const handleLogin = async () => {
+  try {
+    const users = await fetchUsers();
+    const foundUser = users.find(
+      u => u.email === email && u.password === password
+    );
+
+    if (foundUser) {
+      alert(`Welcome ${foundUser.name}`);
+    } else {
+      alert("Invalid credentials");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Error fetching user data");
+  }
+};
+
 
 const Home = lazy(() => delayForDemo(import('./User/Components/Home')))
 function App() {
