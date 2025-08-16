@@ -39,6 +39,7 @@ import PNRStatus from "./User/Components/PNRStatus";
 import PackageBooking from './User/Components/PackageBooking';
 //import Home from './User/Components/Home';
 import { fetchUsers } from './jsonbinApi';
+import Analytics from "./Analytics";
 
 const handleLogin = async () => {
   try {
@@ -67,9 +68,10 @@ function App() {
     <>
      
       <Router>
+          <Analytics/>
       <Suspense fallback={<Loading />}>
       <ToastContainer position="top-center"></ToastContainer>      
-          
+        
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/Terms" element={<Terms/>}></Route>
@@ -114,7 +116,9 @@ function App() {
           
         </Routes>
         </Suspense>
+        
       </Router>
+      
     </>
   )
 }
