@@ -40,11 +40,15 @@ import PackageBooking from './User/Components/PackageBooking';
 //import Home from './User/Components/Home';
 import { fetchUsers } from './jsonbinApi';
 import Analytics from "./Analytics";
-
+// Example: If they are part of a function's scope
+const email = 'test@example.com';
+const password = 'mysecretpassword';
+// ... rest of your code on line 48
 const handleLogin = async () => {
   try {
     const users = await fetchUsers();
     const foundUser = users.find(
+      
       u => u.email === email && u.password === password
     );
 
